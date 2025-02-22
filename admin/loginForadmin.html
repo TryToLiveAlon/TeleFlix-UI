@@ -5,18 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TeleFlix Admin Login</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Animated Gradient Background */
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .animated-bg {
+      background: linear-gradient(270deg, #1a1a2e, #16213e, #0f3460, #53354a);
+      background-size: 800% 800%;
+      animation: gradientShift 10s ease infinite;
+    }
+  </style>
 </head>
-<body class="flex items-center justify-center h-screen bg-gray-100">
-  <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
+<body class="flex items-center justify-center h-screen animated-bg">
+  <div class="bg-gray-900 text-white shadow-lg rounded-lg p-8 w-full max-w-md">
     <h2 class="text-2xl font-bold text-center mb-6">TeleFlix Admin Login</h2>
     <form id="loginForm" class="space-y-4">
       <div>
         <label for="username" class="block font-medium">Username</label>
-        <input type="text" id="username" class="w-full px-4 py-2 border rounded-lg" placeholder="Enter admin username" required>
+        <input type="text" id="username" class="w-full px-4 py-2 border border-gray-700 bg-gray-800 rounded-lg text-white" placeholder="Enter admin username" required>
       </div>
       <div>
         <label for="password" class="block font-medium">Password</label>
-        <input type="password" id="password" class="w-full px-4 py-2 border rounded-lg" placeholder="Enter password" required>
+        <input type="password" id="password" class="w-full px-4 py-2 border border-gray-700 bg-gray-800 rounded-lg text-white" placeholder="Enter password" required>
       </div>
       <button type="submit" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700">Login</button>
     </form>
@@ -27,7 +41,7 @@
     // Fixed admin credentials
     const fixedAdmin = {
       username: "admin",
-      password: "admin123" // You can change this later
+      password: "teleflix123" // You can change this later
     };
 
     document.getElementById('loginForm').addEventListener('submit', function(e) {
@@ -41,7 +55,7 @@
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('adminUser', username);
         // Redirect to dashboard
-        window.location.href = '/dashboard';
+        window.location.href = '/dashboard.html';
       } else {
         document.getElementById('error').classList.remove('hidden');
       }
