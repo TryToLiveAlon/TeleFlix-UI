@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TeleFlix Admin Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-purple-700 via-pink-500 to-red-500 h-screen flex items-center justify-center">
+  <div class="bg-white p-8 rounded-2xl shadow-lg w-96">
+    <h1 class="text-3xl font-bold text-center text-purple-700 mb-6">TeleFlix Admin Login</h1>
+    <form id="loginForm">
+      <div class="mb-4">
+        <label for="username" class="block text-gray-700 font-semibold">Username</label>
+        <input type="text" id="username" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+      </div>
+      <div class="mb-6">
+        <label for="password" class="block text-gray-700 font-semibold">Password</label>
+        <input type="password" id="password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+      </div>
+      <button type="submit" class="w-full bg-purple-700 text-white py-2 rounded-lg hover:bg-purple-800 transition">Login</button>
+      <p id="errorMsg" class="text-red-600 text-center mt-4 hidden">Invalid credentials. Try again.</p>
+    </form>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const errorMsg = document.getElementById('errorMsg');
+    
+    // Fixed admin credentials
+    const fixedAdmin = {
+      username: 'admin',
+      password: 'teleflix123'
+    };
+
+    loginForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      
+      if (username === fixedAdmin.username && password === fixedAdmin.password) {
+        window.location.href = 'dashboard.html'; // Redirect to dashboard
+      } else {
+        errorMsg.classList.remove('hidden');
+      }
+    });
+  </script>
+</body>
+  </html>
+  
