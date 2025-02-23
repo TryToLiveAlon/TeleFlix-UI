@@ -1,1 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Netflix Signup</title>
 
+    <!-- Jquery Script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Toaster CDN css -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css"
+      integrity="sha512-wJgJNTBBkLit7ymC6vvzM1EcSWeM9mmOu+1USHaRBbHkm6W9EgM0HY27+UtUaprntaYQJF75rc8gjxllKs5OIQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="shortcut icon"
+      href="https://assets.nflxext.com/ffe/siteui/common/icons/nficon2016.ico"
+    />
+    <link rel="stylesheet" href="signup.css" />
+    <link rel="stylesheet" href="footer.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url("https://assets.nflxext.com/ffe/siteui/vlv3/28b69a57-cadf-43d9-8a95-e5f2e11199de/a678bf27-dbb6-42e7-aad1-d4dbb1c31d7b/IN-en-20221010-popsignuptwoweeks-perspective_alpha_website_large.jpg");
+      }
+      #container {
+        display: block;
+        margin: auto;
+        width: 450px;
+        height: 600px;
+        /* border: 2px solid red; */
+        text-align: center;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 10px;
+      }
+      #email {
+        width: 75%;
+        height: 60px;
+        padding: 10px;
+        /* padding-left: 20px; */
+        border-radius: 6px;
+        margin-bottom: 35px;
+        outline: none;
+        /* color: #737373; */
+        /* gap: 20px; */
+      }
+      #password {
+        width: 75%;
+        height: 60px;
+        padding: 10px;
+        /* padding-left: 20px; */
+        border-radius: 6px;
+        margin-bottom: 35px;
+        outline: none;
+        /* color: #737373; */
+        /* gap: 20px; */
+      }
+      input:focus {
+        background-color: #737373;
+        color: white;
+        border-bottom: 2px solid orange;
+      }
+      #btn1 {
+        width: 75%;
+        padding: 10px;
+        height: 50px;
+        /* padding-left: 10px; */
+        border-radius: 6px;
+        margin-bottom: 45px;
+        background-color: red;
+        color: white;
+        cursor: pointer;
+      }
+
+      h3 {
+        /* margin-right: 90px; */
+        margin-left: 55px;
+        color: #737373;
+        font-size: 18px;
+        margin-bottom: 20px;
+        font-weight: 400;
+        text-align: left;
+        /* margin-top: 16px; */
+      }
+
+      p {
+        /* color: white; */
+        color: #737373;
+        /* padding-left: 10px; */
+        margin-left: 55px;
+        font-size: 13px;
+        padding-right: 35px;
+        text-align: left;
+      }
+      #more {
+        color: #0080ff;
+      }
+      #now {
+        color: white;
+      }
+      h2 {
+        padding-top: 60px;
+        padding-left: 55px;
+        /* color: white; */
+        text-align: left;
+        color: #fff;
+        font-size: 32px;
+        margin-bottom: 30px;
+        font-weight: 700;
+        /* margin-bottom: 28px */
+      }
+      form {
+        /* border: 2px solid red; */
+        position: relative;
+      }
+      input {
+        /* width: 100%; */
+        display: inline-block;
+      }
+      label {
+        margin-left: 65px;
+        position: absolute;
+        left: 0;
+        top: 30%;
+      }
+
+      input:focus + label {
+        transform: translateY(-1em);
+      }
+      #pass {
+        margin-left: 65px;
+        position: absolute;
+        left: 0;
+        top: 49%;
+      }
+      input:focus + label {
+        transform: translateY(-1em);
+      }
+
+      img {
+        /* margin-top: 0px; */
+        width: 180px;
+        background-color: transparent;
+      }
+      a {
+        text-decoration: none;
+      }
+      @media (max-width: 820px) {
+      }
+
+      #SignupNowbtn {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="img">
+      <img
+        src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png"
+        alt="Netflix Logo"
+      />
+    </div>
+    <div id="container">
+      <form>
+        <h2 id="SignInh2">Sign Up</h2>
+        <input type="email" id="email" placeholder="Enter Email" required />
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter Password"
+          required
+          minlength="14"
+        />
+        <button type="button" id="btn1">Sign up</button>
+        <h3>
+          Already Have Account!
+          <a id="now"> <span id="SignupNowbtn">Sign In now.</span></a>
+        </h3>
+        <p>
+          This page is protected by Google reCAPTCHA to ensure you're not a bot.
+          <a id="more" href=""> Learn more</a>
+        </p>
+      </form>
+    </div>
+
+    <div id="mainfooter"></div>
+  </body>
+
+  <!-- Toast msg cdn script -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"
+    integrity="sha512-zlWWyZq71UMApAjih4WkaRpikgY9Bz1oXIW5G0fED4vk14JjGlQ1UmkGM392jEULP8jbNMiwLWdM8Z87Hu88Fw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    type="text/javascript"
+  ></script>
+
+  <script>
+    document
+      .getElementById("SignupNowbtn")
+      .addEventListener("click", function () {
+        location.href = "Sign_in.html";
+      });
+
+    document.getElementById("btn1").addEventListener("click", function () {
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+
+      if (email && password.length >= 6) {
+        $.toast({
+          text: "Signup successful! Redirecting...",
+          position: "top-center",
+          textAlign: "center",
+          icon: "success",
+          hideAfter: 3000,
+        });
+        setTimeout(function () {
+          location.href = "/Payment/index.html";
+        }, 3000);
+      } else {
+        $.toast({
+          heading: "Error",
+          text: "Please provide a valid email and a password with at least 6 characters.",
+          position: "top-center",
+          showHideTransition: "fade",
+          icon: "error",
+        });
+      }
+    });
+  </script>
+  <script src="footer2.js" type="module"></script>
+  </html>
+  
