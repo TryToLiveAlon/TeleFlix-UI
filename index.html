@@ -1,476 +1,925 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Netflix India – Watch TV Shows Online, Watch Movies Online</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Netflix </title>
+    <link rel="shortcut icon" href="https://assets.nflxext.com/ffe/siteui/common/icons/nficon2016.ico">
+    <!-- <link rel="stylesheet" href="Landing_Page/Styles/style.css">
+    <link rel="stylesheet" href="Landing_Page/Styles/card/card.css">
+    <link rel="stylesheet" type="text/css" href="Landing_Page/netflex-saved-vedios/ques/ques.css"> -->
     <style>
-	    @import url('https://fonts.googleapis.com/css2?family=Martel+Sans:wght@600&family=Poppins:wght@300;400;700&display=swap');
-
-* {
-    padding: 0;
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-}
-
-body {
-    background-color: black;
-}
-
-.main {
-    background-image: url("assets/images/bg.jpg");
-    background-position: center center;
-    background-size: max(1200px, 100vw);
-    background-repeat: no-repeat;
-    height: 644px;
-    position: relative;
-}
-
-.main .box {
-    height: 644px;
-    width: 100%;
-    opacity: 0.69;
-    position: absolute;
-    top: 0;
-    background-color: black;
-}
-
-nav {
-    max-width: 60vw;
-    justify-content: space-between;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    height: 100px;
-}
-
-nav img {
-    color: red;
-    width: 130px;
-    position: relative;
-    z-index: 10;
-}
-
-nav button {
-    position: relative;
-    z-index: 10;
-}
-
-.hero {
-    font-family: 'Martel Sans', sans-serif;
-    height: calc(100% - 100px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    color: white;
-    position: relative;
-    gap: 23px;
-    padding: 0 30px;
-}
-
-.hero> :nth-child(1) {
-    font-family: 'Poppins', sans-serif;
-    font-weight: bolder;
-    font-size: 48px;
-    text-align: center;
-}
-
-.hero> :nth-child(2) {
-    font-weight: 400;
-    font-size: 24px;
-    text-align: center;
-}
-
-.hero> :nth-child(3) {
-    font-weight: 400;
-    font-size: 20px;
-    text-align: center;
-}
-
-.separation {
-    height: 7px;
-    background-color: rgb(46, 44, 44);
-    position: relative;
-    z-index: 20;
-}
-
-.btn {
-    padding: 3px 8px;
-    font-weight: 400;
-    color: white;
-    background-color: rgba(248, 243, 243, 0.021);
-    border-radius: 4px;
-    border: 1px solid white;
-    cursor: pointer;
-
-}
-
-.btn-red {
-    background-color: red;
-    color: white;
-    padding: 3px 24px;
-    font-size: 20px;
-    border-radius: 4px;
-    font-weight: 400;
-}
-
-.btn-red-sm {
-    background-color: red;
-    color: white;
-}
-
-.hero-buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-}
-
-.main input {
-    padding: 7px 101px 8px 14px;
-    color: white;
-    font-size: 12px;
-    border-radius: 4px;
-    background-color: rgba(23, 23, 23, 0.7);
-    border: 1px solid rgba(246, 238, 238, 0.5);
-}
-
-.first {
-    display: flex;
-    justify-content: center;
-    max-width: 70vw;
-    margin: auto;
-    color: white;
-    justify-content: center;
-    align-items: center;
-}
-
-
-
-.secImg {
-    position: relative;
-}
-
-.secImg img {
-    width: 555px;
-    position: relative;
-    z-index: 10;
-}
-
-.secImg video {
-    position: absolute;
-    top: 51px;
-    right: 0;
-    width: 555px;
-}
-
-section.first>div {
-    display: flex;
-    flex-direction: column;
-    padding: 34px 0;
-}
-
-section.first>div :nth-child(1) {
-    font-size: 48px;
-    font-weight: bolder;
-}
-
-
-section.first>div :nth-child(2) {
-    font-size: 24px;
-
-}
-
-
-.faq h2 {
-    text-align: center;
-    font-size: 48px;
-}
-
-.faq {
-    background: black;
-    color: white;
-    padding: 34px;
-}
-
-.faqbox:hover {
-    background-color: #414141;
-    color: white;
-}
-
-.faqbox svg {
-    filter: invert(1);
-}
-
-.faqbox {
-    transition: all 1s ease-out;
-    font-size: 24px;
-    display: flex;
-    justify-content: space-between;
-    background-color: #2d2d2d;
-    padding: 24px;
-    max-width: 60vw;
-    margin: 34px auto;
-    cursor: pointer;
-}
-
-footer {
-    color: white;
-    max-width: 60vw;
-    margin: auto;
-    padding: 60px;
-}
-
-footer .questions {
-    padding: 34px 0;
-}
-
-
-.footer {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    color: white;
-}
-
-
-
-@media screen and (max-width: 1300px) {
-
-    nav{
-        max-width: 90vw;
-    }
-
-    .first {
-        flex-wrap: wrap;
-    }
-
-    .secImg img {
-        width: 305px;
-    }
-
-    .secImg video {
-        width: 305px;
-    }
-
-    .hero> :nth-child(1) {
-        font-size: 32px;
-    }
-
-    .hero> :nth-child(2) {
-        font-size: 18px;
-    }
-
-    .hero> :nth-child(3) {
-        font-size: 18px;
-    }
-
-    .hero-buttons {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 16px;
-    }
-
-    .faq h2 {
-        text-align: center;
-        font-size: 32px;
-    }
-
-    footer {
-        max-width: 90vw;
-        padding: 75px 0;
-    }
-
-    .footer-item{
-        align-items: center;
-    }
- 
-
-}
-
-
-
-@media screen and (max-width: 1300px) {
-
-    .footer {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 25px;
-    }
-}
-
-
-.footer a {
-    font-size: 14px;
-    color: white;
-}
-
-.footer-item {
-    display: flex;
-    flex-direction: column;
-    gap: 23px;
-	}
-    </style>
-</head>
-
-<body>
-
-    <div class="main">
-        <nav>
-            <span><img width="53" src="assets/images/logo.svg" alt=""></span>
-            <div>
-                <button class="btn">English</button>
-                <button class="btn btn-red-sm">Sign In</button>
-            </div>
-        </nav>
-        <div class="box">
-        </div>
-        <div class="hero">
-            <span>Enjoy big movies, hit series and more from ₹ 149.</span>
-            <span>Join today. Cancel anytime.</span>
-            <span>Ready to watch? Enter your email to create or restart your membership.</span>
-            <div class="hero-buttons">
-                <input type="text" placeholder="Email Address">
-                <button class="btn btn-red">Get Started &gt;</button>
-            </div>
-        </div>
-
-        <div class="separation"></div>
-
-    </div>
-
-    <section class="first">
-        <div>
-            <span>Enjoy on your TV</span>
-            <span>Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.</span>
-        </div>
-
-        <div class="secImg">
-            <img src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png" alt="">
-            <video src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-tv-in-0819.m4v"
-                autoplay loop muted></video>
-        </div>
-    </section>
-    <div class="separation"></div>
-
-    <section class="first second">
-
-        <div class="secImg">
-            <img src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/mobile-0819.jpg" alt="">
-
-        </div>
-        <div>
-            <span>Download your shows to watch offline</span>
-            <span>Save your favourites easily and always have something to watch.</span>
-        </div>
-    </section>
-
-    <div class="separation"></div>
-    <section class="first third">
-        <div>
-            <span>Watch everywhere</span>
-            <span>Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.</span>
-        </div>
-
-        <div class="secImg">
-            <img src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png" alt="">
-            <video src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-devices-in.m4v"
-                autoplay loop muted></video>
-        </div>
-    </section>
-    <div class="separation"></div>
-
-
-    <section class="first second">
-
-        <div class="secImg">
-            <img src="https://occ-0-2849-3646.1.nflxso.net/dnm/api/v6/19OhWN2dO19C9txTON9tvTFtefw/AAAABVr8nYuAg0xDpXDv0VI9HUoH7r2aGp4TKRCsKNQrMwxzTtr-NlwOHeS8bCI2oeZddmu3nMYr3j9MjYhHyjBASb1FaOGYZNYvPBCL.png?r=54d"
-                alt="">
-
-        </div>
-        <div>
-            <span>Create profiles for kids</span>
-            <span>Send children on adventures with their favourite characters in a space made just for them—free with
-                your membership.</span>
-        </div>
-    </section>
-
-    <div class="separation"></div>
-
-    <section class="faq">
-        <h2>Frequently Asked Questions</h2>
-        <div class="faqbox">
-            <span>What is NetFlix</span>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 4V20" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M4 12H20" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-
-        </div>
-        <div class="faqbox">
-            <span>How much does Netflix cost?</span>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 4V20" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M4 12H20" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-
-        </div>
-        <div class="faqbox">
-            <span>What can I watch on Netflix?</span>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 4V20" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M4 12H20" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-
-        </div>
-        <div class="faqbox">
-            <span>Where can I watch?</span>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 4V20" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M4 12H20" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-
-        </div>
-    </section>
-    <div class="separation"></div>
-
-    <footer>
-        <div class="questions">
-            Questions? Call 000-800-919-1694
-        </div>
-        <div class="footer">
-            <div class="footer-item"> 
-                <a href="faq">Investor Relations</a>
-                <a href="faq">Jobs</a>
-                <a href="faq">Ways to Watch</a>
-                <a href="faq">Terms of Use</a>
-            </div>
-
-            <div class="footer-item"> 
-                <a href="faq">Help Centre</a>
-                <a href="faq">Account</a>
-                <a href="faq">Speed Test</a>
-                <a href="faq">Legal Notices</a>
-            </div>
-            <div class="footer-item">
-                <a href="faq">Media Centre</a>
-                <a href="faq">Privacy</a>
-                <a href="faq">Cookie Preferences</a> 
-                <a href="faq">Corporate</a>
-            </div>
-
-            <div class="footer-item">
-                <a href="faq">Contact Us</a>
-                <a href="faq">Speed Test</a> 
-                <a href="faq">Legal Notices</a> 
-                <a href="faq">Only on Netflix</a>
-            </div>
-        </div>
-    </footer>
-</body>
-
-</html>
+        :root {
+            --primary-color: #e50914;
+            --dark-color: #141414;
+            --light-color: #f4f4f4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #000000;
+            color: #999999;
+
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: #ffffff;
+        }
+
+        h3 {
+            font-weight: lighter;
+        }
+
+        a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        p {
+            margin: 0.5rem 0;
+            font-weight: bold;
+            color: #ffffff;
+
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .showcase {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background: url('https://assets.nflxext.com/ffe/siteui/vlv3/afc06103-4d6a-4236-b496-34b671a7e9ba/383fc36a-aa04-4dfd-95a0-a4b71bc21eed/IN-en-20221003-popsignuptwoweeks-perspective_alpha_website_medium.jpg') no-repeat center center/cover;
+
+        }
+
+        .showcase::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.4);
+            box-shadow: 120px 100px 250px #000000, inset -120px -100px -250px #000000;
+        }
+
+        .showcase-top {
+            position: relative;
+            z-index: 2;
+            height: 90px;
+
+
+        }
+
+        .showcase-top img {
+            width: 160px;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translate(40%, -50%);
+
+        }
+
+        .showcase-content {
+            position: relative;
+            margin: 0 26%;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            margin-top: 9rem;
+        }
+
+        .showcase-content h1 {
+            font-weight: 700px;
+            font-size: 55px;
+            margin: 0 30px;
+            max-width: 800px;
+            line-height: 74.5px;
+
+        }
+
+        .showcase-content h3 {
+            color: white;
+            font-size: 25px;
+            margin: 16px 0;
+        }
+
+        .showcase-content p {
+            font-size: 19.2px;
+            font-weight: 300;
+            padding-top: 0.5rem;
+            padding-bottom: 1rem;
+        }
+
+        .showcase-content input {
+            position: absolute;
+            left: 0;
+            bottom: -8vh;
+            width: 454px;
+            height: 3rem;
+            font-size: 1rem;
+            padding-left: 0.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            font-size: 1rem;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            border-radius: 2px;
+            margin-right: 0.5rem;
+            outline: none;
+            box-shadow: 0 5px 3px rgba(0, 0, 0, 0.45);
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .btn-rounded {
+            border-radius: 5px;
+        }
+
+        .showcase-content .btn-lg {
+            position: absolute;
+            right: 0;
+            bottom: -8vh;
+            padding: 0.5 rem 1.2rem;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            height: 31.5px;
+            width: 12rem;
+
+        }
+
+        .showcase-top a {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translate(-60%, -50%);
+        }
+
+        .card-0,
+        .card-1,
+        .card-2,
+        .card-3 {
+            border-top: 8px rgb(69, 69, 69) solid;
+            padding: 50px;
+        }
+
+        .card-0 {
+            position: relative;
+            display: inline-grid;
+            grid-template-columns: 40% 50%;
+            text-align: left;
+            align-items: center;
+            padding: 25px 45px 50px;
+        }
+
+        .desc-0 {
+            padding-left: 80px;
+        }
+
+        .style-cards h1 {
+            font-size: 3rem;
+            padding: 1rem;
+            padding-left: 0;
+        }
+
+        .style-cards h3 {
+            font-size: 1.6rem;
+            line-height: 2rem;
+        }
+
+        .card-0 video {
+            position: relative;
+            width: 100%;
+            height: 54%;
+            grid-column: 2/2;
+            grid-row: 1/2;
+            z-index: -1;
+
+        }
+
+        .card-0 img {
+            grid-column: 2/2;
+            grid-row: 1/2;
+        }
+
+        .card-1 {
+            position: relative;
+            display: inline-grid;
+            grid-template-columns: 50% 40%;
+            text-align: left;
+            align-items: center;
+            padding: 25px 45px 50px;
+        }
+
+        .desc-1 {
+            padding-left: 80px;
+        }
+
+        .card-2 {
+            position: relative;
+            display: inline-grid;
+            grid-template-columns: 40% 50%;
+            text-align: left;
+            align-items: center;
+            padding: 25px 45px 50px;
+        }
+
+        .desc-2 {
+            padding-left: 80px;
+        }
+
+        .card-2 video {
+            position: relative;
+            width: 100%;
+            height: 54%;
+            grid-column: 2/2;
+            grid-row: 1/2;
+            z-index: -1;
+
+        }
+
+        .card-3 {
+            position: relative;
+            display: inline-grid;
+            grid-template-columns: 50% 40%;
+            text-align: left;
+            align-items: center;
+            padding: 25px 45px 50px;
+        }
+
+        .desc-3 {
+            padding-left: 80px;
+        }
+
+        .faq {
+            text-align: center;
+        }
+
+        .faq h1 {
+            padding-bottom: 40px;
+            font-size: 3rem;
+        }
+
+        .questions {
+            display: flex;
+            flex-direction: column;
+            flex-basis: 40%;
+            align-items: center;
+        }
+
+        .questions li {
+            padding: 20px 30px;
+            margin: 5px;
+            font-size: 1.6rem;
+            background-color: rgb(69, 69, 69);
+            color: white;
+            text-align: left;
+            width: 60%;
+        }
+
+        .faq p {
+            padding-top: 60px;
+            align-items: center;
+            grid-template-columns: 50% 40%;
+
+        }
+
+        .card-0 video {
+            position: relative;
+            width: 100%;
+            height: 54%;
+            grid-column: 2/2;
+            grid-row: 1/2;
+            z-index: -1;
+        }
+
+        .card-0 img {
+            grid-column: 2/2;
+            grid-row: 1/2;
+        }
+
+
+
+        /*EMAIL ADDRESS STARTS*/
+        .email-address-container {
+
+            z-index: 1;
+            position: relative;
+            text-align: center;
+            width: 100%;
+            padding-top: 4%;
+            padding-bottom: 4%;
+            background-color: black;
+            font-size: larger;
+
+        }
+
+        .email-address-container input {
+            width: 40%;
+            padding: 22px;
+            border: none;
+            margin-top: 0.5%;
+            outline: none;
+        }
+
+        .email-address-container button {
+            padding: 22px;
+            border: none;
+            width: 15%;
+            height: 65px;
+            background-color: #e50914;
+            color: white;
+            margin-left: -0.3%;
+            font-weight: bold;
+            font-size: medium;
+        }
+
+        /*EMAIL ADDRESS ENDS*/
+
+
+
+        /*RESPONSIVE CSS CODE*/
+
+
+        @media (max-width: 943px) {
+
+            /*ENJOY ON YOUR TV*/
+            .main-section .section-container {
+                display: block;
+            }
+
+            .main-section .section-container .left-column {
+                width: 100%;
+                text-align: center;
+            }
+
+            .main-section .section-container .right-column {
+                width: 100%;
+            }
+
+            /*DOWNLOAD YOU SHOW TO WATCH OFFLINE*/
+            .main-section .section2-container {
+                display: block;
+            }
+
+            .main-section .section2-container .left-column {
+                width: 100%;
+            }
+
+            .main-section .section2-container .right-column {
+                width: 100%;
+                text-align: center;
+            }
+
+        }
+
+        @media (max-width: 774px) {
+
+            /* ENJOY ON YOUR TV */
+            .main-section .section-container {
+                padding-bottom: 0px;
+            }
+        }
+
+
+
+
+
+        @media (max-width: 500px) {
+
+            /*ENJOY ON YOUR TV*/
+            .main-section .section-container .right-column {
+                height: 270px;
+            }
+
+            /* DOWNLOAD YOUR SHOW TO WATCH OFFLINE */
+            .main-section .section2-container .left-column .box {
+                width: 100%;
+            }
+
+        }
+
+
+        /*REsponsive email code*/
+
+        @media (max-width:610px) {
+            .email-address-container {
+
+                width: 100%;
+
+
+
+            }
+
+            .email-address-container>div {
+                display: flex;
+                flex-direction: column;
+
+
+
+                gap: 20px;
+                padding: 10px;
+
+            }
+
+            .email-address-container>div>button {
+                border: 2px solid turquoise;
+                width: 50%;
+                margin-left: 25%;
+                margin-right: 25%;
+
+            }
+
+            .email-address-container>div>input {
+                border: 2px solid turquoise;
+                width: 100%;
+                padding-left: 20%;
+
+
+            }
+        }
+
+
+        /*resopnsive header section*/
+        @media (min-width:1200px) and (max-width: 1245px) {
+            .showcase {
+                width: 100%;
+                height: 130%;
+
+            }
+
+        }
+
+        @media (min-width:1056px) and (max-width: 1200px) {
+            .showcase {
+                width: 100%;
+                height: 140%;
+
+            }
+
+        }
+
+        @media (min-width:1014px) and (max-width: 1056px) {
+            .showcase {
+                width: 100%;
+                height: 140%;
+
+            }
+
+        }
+
+        @media (min-width:942px) and (max-width:1014px) {
+            .showcase {
+                width: 100%;
+                height: 140%;
+
+            }
+
+            .showcase-content input {
+
+                width: 60%;
+                height: 3rem;
+
+            }
+
+            .showcase-content .btn-lg {
+
+                font-size: 1.15rem;
+
+                height: 31.5px;
+                width: 30%;
+                font-weight: bold;
+
+            }
+
+
+        }
+
+        @media (min-width:862px) and (max-width: 942px) {
+            .showcase {
+                width: 100%;
+                height: 140%;
+
+            }
+
+            .showcase-content input {
+
+                width: 60%;
+                height: 3rem;
+
+            }
+
+            .showcase-content .btn-lg {
+
+                font-size: 1.15rem;
+
+                height: 31.5px;
+                width: 30%;
+                font-weight: bold;
+
+            }
+
+
+        }
+
+        @media (min-width:816px) and (max-width: 862px) {
+            .showcase {
+                width: 100%;
+                height: 135%;
+
+            }
+
+            .showcase-content input {
+
+                width: 60%;
+                height: 3rem;
+
+            }
+
+            .showcase-content .btn-lg {
+
+                font-size: 1.15rem;
+
+                height: 31.5px;
+                width: 30%;
+                font-weight: bold;
+
+            }
+
+
+        }
+
+        @media (min-width:700px) and (max-width: 816px) {
+            .showcase {
+                width: 100%;
+                height: 135%;
+
+            }
+
+            .showcase-content input {
+
+                width: 70%;
+                height: 3rem;
+
+            }
+
+            .showcase-content .btn-lg {
+
+                font-size: 1.0rem;
+                height: 37.5px;
+                width: 30%;
+                font-weight: lighter;
+                padding: 5px;
+
+            }
+
+
+        }
+
+        @media (min-width:600px) and (max-width: 700px) {
+            .showcase {
+                width: 100%;
+                height: 125%;
+
+            }
+
+            .showcase-content input {
+
+                width: 70%;
+                height: 3rem;
+
+            }
+
+            .showcase-content .btn-lg {
+
+                font-size: 1rem;
+
+                height: 31.7px;
+                width: 20%;
+
+
+            }
+
+            .showcase-content h1 {
+                font-weight: 700px;
+                font-size: 30px;
+                margin: -30px 10px;
+                max-width: 500px;
+                line-height: 50.5px;
+            }
+
+            .showcase-content h3 {
+                color: white;
+                font-size: 20px;
+                padding-top: 10px;
+                margin: 16px 0;
+            }
+
+
+        }
+
+        @media (min-width:500px) and (max-width: 600px) {
+            .showcase {
+                width: 100%;
+                height: 125%;
+
+            }
+
+            .showcase-content input {
+
+                width: 90%;
+                height: 3rem;
+
+            }
+
+            .showcase-content .btn-lg {
+
+                font-size: 0.7rem;
+                right: -17%;
+                height: 31.7px;
+                width: 15%;
+                font-weight: bolder;
+
+
+            }
+
+            .showcase-content h1 {
+                font-weight: 700px;
+                font-size: 28px;
+                margin: -30px 10px;
+                width: 100%;
+                line-height: 50.5px;
+            }
+
+            .showcase-content h3 {
+                color: white;
+                font-size: 20px;
+                padding-top: 10px;
+                margin: 16px 0;
+            }
+
+
+        }
+
+        @media (min-width:400px) and (max-width: 500px) {
+            .showcase {
+                width: 110%;
+                height: 125%;
+
+            }
+
+            .showcase-content input {
+
+                width: 90%;
+                height: 3rem;
+
+            }
+
+            .showcase-content .btn-lg {
+
+                font-size: 0.7rem;
+
+                height: 31.7px;
+                width: 15%;
+                font-weight: bolder;
+
+
+            }
+
+            .showcase-content h1 {
+                font-weight: 700px;
+                font-size: 28px;
+                margin: -30px 10px;
+                width: 100%;
+                line-height: 50.5px;
+            }
+
+            .showcase-content h3 {
+                color: white;
+                font-size: 20px;
+                padding-top: 10px;
+                margin: 16px 0;
+            }
+
+
+        }
+
+        @media (min-width:360px) and (max-width: 400px) {
+            .showcase {
+                width: 110%;
+                height: 125%;
+
+            }
+
+            .showcase-content input {
+
+                width: 90%;
+                height: 3rem;
+
+            }
+
+            .showcase-content .btn-lg {
+
+                font-size: 0.7rem;
+
+                height: 31.7px;
+                width: 15%;
+                font-weight: bolder;
+
+
+            }
+
+            .showcase-content h1 {
+                font-weight: 700px;
+                font-size: 28px;
+                margin: -30px 10px;
+                width: 100%;
+                line-height: 50.5px;
+            }
+
+            .showcase-content h3 {
+                color: white;
+                font-size: 20px;
+                padding-top: 10px;
+                margin: 16px 0;
+            }
+
+
+        }
+
+        @media (min-width:1601px) {
+            .showcase {
+                width: 110%;
+                height: 125%;
+
+            }
+
+            .showcase-content input {
+
+                width: 80%;
+                height: 3rem;
+
+            }
+
+            .showcase-content .btn-lg {
+
+                /* font-size: 0.7rem;
+       
+        height: 31.7px;
+        width: 15%;
+        font-weight: bolder; */
+
+
+            }
+
+            .showcase-content h1 {
+                font-weight: 700px;
+                font-size: 50px;
+                margin: -30px 10px;
+                width: 100%;
+                line-height: 50.5px;
+            }
+
+            .showcase-content h3 {
+                color: white;
+                font-size: 20px;
+                padding-top: 10px;
+                margin: 16px 0;
+            }
+
+            .showcase-top {
+                /* border: 2px solid rgb(27, 24, 24); */
+                /* margin-top: -500px; */
+            }
+
+            .btn-rounded {
+                margin-right: 500px;
+            }
+
+            .showcase-content {
+                margin-top: 500px;
+                font-weight: bolder;
+                font-size: 500rem;
+            }
+
+            /* .main-section .section-container .right-column .vedio-1 {
+    margin-left: 13%;
+    margin-top: 9%;
+    width: 76%;
+} */
+            #videoSectionparent1 {
+                /* border: 2px solid red; */
+                width: 500px;
+                height: 500px;
+                display: flex;
+            }
+
+            #videoSectionparent1 img {
+                position: absolute;
+                margin-left: 50px;
+                width: 100%;
+                height: 600px;
+            }
+
+            #videoSectionparent1 video {
+                margin-left: 102%;
+                margin-top: 13%;
+                width: 116%;
+            }
+        }
+
+        /*Main section starts*/
+
+        .main-section .section-container {
+            border-top: 8px solid #222;
+            background-color: black;
+            display: flex;
+            padding: 0px 80px;
+            padding-bottom: 70px;
+
+        }
+
+        .main-section .section-container .left-column {
+            padding-top: 13%;
+            padding-right: 2%;
+
+        }
+
+        .main-section .section-container .left-column h1 {
+            color: white;
+        }
+
+        .main-section .section-container .left-column h3 {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: normal;
+            margin-top: 5%;
+        }
+
+        .main-section .section-container .right-column {
+            overflow: hidden;
+            position: relative;
+            width: 80%;
+            height: 500px;
+        }
+
+        .main-section .section-container .right-column img {
+            position: absolute;
+            width: 100%;
+
+        }
+
+        .main-section .section-container .right-column .vedio-1 {
+            margin-left: 13%;
+            margin-top: 16%;
+            width: 73%;
+        }
+
+        /* download your show */
+        .main-section .section2-container {
+            border-top: 8px solid #222;
+            background-color: black;
+            display: flex;
+            padding: 0px 80px;
+            padding-bottom: 90px;
+        }
+
+        .main-section .section2-container .right-column {
+            padding-top: 13%;
+            padding-right: 2%;
+            width: 50%;
+        }
+
+        .main-section .section2-container .left-column img {
+            width: 100%;
+        }
+
+        .main-section .section2-container .right-colu
