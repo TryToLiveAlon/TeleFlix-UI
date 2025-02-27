@@ -219,55 +219,113 @@ header.black-bg{
     }
     </style>
     <script>
-        const configUrl = "https://raw.githubusercontent.com/TryToLiveAlon/Teleflix-data/refs/heads/main/config.xml"; // Replace with your actual raw GitHub link
+        const configUrl = "https://raw.githubusercontent.com/TryToLiveAlon/Teleflix-data/main/config.xml"; 
+const apiBaseUrl = "https://carflow-mocha.vercel.app/api/movie?name="; 
 
-// Initialize the app
+// Initialize app
 function init() {
-    fetchTrendingImageFromXML();
-    fetchAndBuildAllSections();
+    fetchMovieFromXML();
 }
 
-// Fetch trending image from XML and set banner
-function fetchTrendingImageFromXML() {
+// Fetch a random movie from XML file
+function fetchMovieFromXML() {
     fetch(configUrl)
-        .then((response) => response.text())
-        .then((xmlText) => {
+        .then(response => {
+            if (!response.ok) throw new Error("Failed to load XML");
+            return response.text();
+        })
+        .then(xmlText => {
+            console.log("✅ XML Loaded Successfully");
+
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(xmlText, "application/xml");
-            const links = Array.from(xmlDoc.getElementsByTagName("tr-link"));
 
-            if (links.length) {
-                const randomIndex = Math.floor(Math.random() * links.length);
-                const selectedLink = links[randomIndex].textContent;
-                buildBannerFromXML(selectedLink);
-            }
+            const movies = Array.from(xmlDoc.getElementsByTagName("trending"));
+            if (movies.length === 0) throw new Error("No <trending> movies found in XML");
+
+            // Select a random movie
+            const randomIndex = Math.floor(Math.random() * movies.length);
+            const selectedMovie = movies[randomIndex];
+
+            const nameTag = selectedMovie.getElementsByTagName("name")[0];
+            const trailerTag = selectedMovie.getElementsByTagName("trailer")[0];
+
+            if (!nameTag || !trailerTag) throw new Error("Missing <name> or <trailer> tag in XML");
+
+            const movieName = nameTag.textContent.trim();
+            const trailerImg = trailerTag.textContent.trim();
+
+            console.log(`🎬 Selected Movie: ${movieName}`);
+
+            showLoadingBanner(movieName, trailerImg);
+            fetchMovieDetails(movieName, trailerImg);
         })
-        .catch((err) => console.error("Failed to fetch XML:", err));
+        .catch(err => {
+            console.error("❌ XML Fetch Error:", err);
+            document.getElementById("banner-section").innerHTML = "<p style='color:white;'>Failed to load trending movies.</p>";
+        });
 }
 
-// Build the banner section using the random trending image
-function buildBannerFromXML(imageUrl) {
-    const bannerCont = document.getElementById('banner-section');
-    bannerCont.style.backgroundImage = `url('${imageUrl}')`;
-
-    const div = document.createElement('div');
-    div.innerHTML = `
-        <h2 class="banner__title">Trending Banner</h2>
-        <p class="banner__info">Trending from config.xml</p>
-        <div class="action-buttons-cont">
-            <button class="action-button">Play</button>
-            <button class="action-button">More Info</button>
+// Show a loading banner while API is fetching
+function showLoadingBanner(movieName, trailerImg) {
+    const bannerCont = document.getElementById("banner-section");
+    bannerCont.style.backgroundImage = `url('${trailerImg}')`;
+    bannerCont.innerHTML = `
+        <div class="banner-content container">
+            <h2 class="banner__title">${movieName}</h2>
+            <p class="banner__info" style="color:yellow;">⏳ Loading movie details...</p>
         </div>
     `;
-    div.className = "banner-content container";
-    bannerCont.append(div);
 }
 
-window.addEventListener('load', function () {
-    init();
-});
+// Fetch movie details from API
+async function fetchMovieDetails(movieName, trailerImg) {
+    const requestUrl = apiBaseUrl + encodeURIComponent(movieName);
+    console.log("📡 Fetching API:", requestUrl);
 
-        
+    try {
+        const response = await fetch(requestUrl);
+
+        console.log("📡 API Response Status:", response.status); // Debugging line
+        if (!response.ok) throw new Error(`API request failed with status ${response.status}`);
+
+        const data = await response.json();
+        console.log("✅ API Response Data:", data); // Debugging line
+
+        if (!data || Object.keys(data).length === 0) {
+            throw new Error("Received empty response from API.");
+        }
+
+        buildBanner(movieName, data, trailerImg);
+    } catch (err) {
+        console.error("❌ API Fetch Error:", err);
+        document.getElementById("banner-section").innerHTML = `
+            <p style='color:white;'>❌ Failed to load movie details.<br>${err.message}</p>
+        `;
+    }
+}
+
+// Build banner with movie data
+function buildBanner(movieName, movieData, trailerImg) {
+    const bannerCont = document.getElementById("banner-section");
+    bannerCont.style.backgroundImage = `url('${trailerImg}')`;
+
+    bannerCont.innerHTML = `
+        <div class="banner-content container">
+            <h2 class="banner__title">${movieName}</h2>
+            <p class="banner__info">⭐ ${movieData.ratingValue || "N/A"} | 🎬 ${movieData.director || "Unknown"}</p>
+            <p class="banner__overview">${movieData.description || "No description available."}</p>
+            <div class="action-buttons-cont">
+                <button class="action-button">▶ Play Now</button>
+                <button class="action-button">ℹ More Info</button>
+            </div>
+        </div>
+    `;
+}
+
+// Load on page start
+window.addEventListener("load", init);
+                
     </script>
 </head>
 <body>
